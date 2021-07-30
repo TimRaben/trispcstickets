@@ -25,7 +25,7 @@ const settings = new enmap({
 });
 
 client.on('ready', () => {
-    console.log('ready')
+    console.log('Succesvol herladen!')
 });
 
 client.on('message', async message => {
@@ -35,11 +35,11 @@ client.on('message', async message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
 
-    if(command == "ticket-setup") {
+    if(command == "ticketsetup") {
         // ticket-setup #channel
 
         let channel = message.mentions.channels.first();
-        if(!channel) return message.reply("Verkeerd Commando! Gebruik: `!ticket-setup #channel`");
+        if(!channel) return message.reply("**FOUT!** - Verkeerd Commando! Gebruik: `!ticket-setup #channel`");
 
         let sent = await channel.send(new Discord.MessageEmbed()
             .setTitle("Trispcs Tickets - Aanmaken")
@@ -55,12 +55,12 @@ client.on('message', async message => {
         sent.react('🎫')
         settings.set(`${message.guild.id}-ticket`, sent.id);
 
-        message.channel.send("Ticket Aanmaak Message succesvol aangemaakt!")
+        message.channel.send("**Succesvol Reactie Bericht aangemaakt!**")
     }
 
     if(command == "close", "done") {
         if(!args[0]) return message.channel.send("Geef een reden op!")
-        if(!message.channel.name.includes("overig-", "vraag-", "management-", "event-", "sollicitatie-")) return message.channel.send("**FOUT!** - Deze Ticket staat niet in de Database! Dus het is niet mogelijk om dit kanaal te sluiten!")
+        if(!message.channel.name.includes("overig", "vraag", "management", "event", "sollicitatie")) return message.channel.send("**FOUT!** - Deze Ticket staat niet in de Database! Dus het is niet mogelijk om dit kanaal te sluiten!")
         message.channel.delete();
     }
 });
