@@ -65,8 +65,6 @@ client.on('message', async message => {
     }
 });
 
-const supportrole = (791436006007767060)
-
 client.on('messageReactionAdd', async (reaction, user) => {
     if(user.partial) await user.fetch();
     if(reaction.partial) await reaction.fetch();
@@ -77,6 +75,10 @@ client.on('messageReactionAdd', async (reaction, user) => {
     let ticketid = await settings.get(`${reaction.message.guild.id}-ticket`);
 
     if(!ticketid) return;
+
+{
+
+}
 
     if(reaction.message.id == ticketid && reaction.emoji.name == '❓') {
         reaction.users.remove(user);
