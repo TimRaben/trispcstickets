@@ -59,8 +59,8 @@ client.on('message', async message => {
     }
 
     if(command == "close", "done") {
-        if(!args[0]) return message.channel.send("Geef een reden op!")
-        if(!message.channel.name.includes("overig", "vraag", "management", "event", "sollicitatie")) return message.channel.send("**FOUT!** - Deze Ticket staat niet in de Database! Dus het is niet mogelijk om dit kanaal te sluiten!")
+        if(!args[0]) return message.channel.send("**FOUT!** - Geef een geldige reden op!")
+        if(!message.channel.name.includes("overig-", "vraag-", "management-", "event-", "sollicitatie-")) return message.channel.send("**FOUT!** - Deze Ticket staat niet in de Database! Dus het is niet mogelijk om dit kanaal te sluiten!")
         message.channel.delete();
     }
 });
@@ -75,10 +75,6 @@ client.on('messageReactionAdd', async (reaction, user) => {
     let ticketid = await settings.get(`${reaction.message.guild.id}-ticket`);
 
     if(!ticketid) return;
-
-{
-
-}
 
     if(reaction.message.id == ticketid && reaction.emoji.name == '❓') {
         reaction.users.remove(user);
