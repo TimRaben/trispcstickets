@@ -60,7 +60,7 @@ client.on('message', async message => {
 
     if(command == "close", "done") {
         if(!args[0]) return message.channel.send("Geef een reden op!")
-        if(!message.channel.name.includes("overig-", "vraag-", "management-", "event-", "sollicitatie-")) return message.channel.send("Je kan dit momenteel niet gebruiken!")
+        if(!message.channel.name.includes("overig-", "vraag-", "management-", "event-", "sollicitatie-")) return message.channel.send("**FOUT!** - Deze Ticket staat niet in de Database! Dus het is niet mogelijk om dit kanaal te sluiten!")
         message.channel.delete();
     }
 });
