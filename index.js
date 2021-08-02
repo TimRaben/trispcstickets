@@ -58,13 +58,9 @@ client.on('message', async message => {
         message.channel.send("**Succesvol Reactie Bericht aangemaakt!**")
     }
 
-    if(command == "close", "done") {
+    if(command == "close", "done",) {
         if(!args[0]) return message.channel.send("**FOUT!** - Geef een geldige reden op!")
-        if(!message.channel.name.includes("vraag-")) return message.channel.send("**FOUT!** - Deze Ticket staat niet in de Database! Dus het is niet mogelijk om dit kanaal te sluiten!")
-        if(!message.channel.name.includes("overig-")) return message.channel.send("**FOUT!** - Deze Ticket staat niet in de Database! Dus het is niet mogelijk om dit kanaal te sluiten!")
-        if(!message.channel.name.includes("management-")) return message.channel.send("**FOUT!** - Deze Ticket staat niet in de Database! Dus het is niet mogelijk om dit kanaal te sluiten!")
-        if(!message.channel.name.includes("event-")) return message.channel.send("**FOUT!** - Deze Ticket staat niet in de Database! Dus het is niet mogelijk om dit kanaal te sluiten!")
-        if(!message.channel.name.includes("sollicitatie-")) return message.channel.send("**FOUT!** - Deze Ticket staat niet in de Database! Dus het is niet mogelijk om dit kanaal te sluiten!")
+        if(!message.channel.name.includes("sollicitatie-", "vraag-", "overig-", "event-", "management-",)) return message.channel.send("**FOUT!** - Deze Ticket staat niet in de Database! Dus het is niet mogelijk om dit kanaal te sluiten!")
         message.channel.delete();
     }
 });
