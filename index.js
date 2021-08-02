@@ -59,7 +59,7 @@ client.on('message', async message => {
     }
 
     if(command == "close") {
-        if(!message.channel.name.includes("sollicitatie-", "vraag-", "overig-", "event-", "management-")) return message.channel.send("**FOUT!** - Deze Ticket staat niet in de Database! Dus het is niet mogelijk om dit kanaal te sluiten! Is dit wel een ticket? Vraag aan een Manager+ om de ticket handmatig te sluiten!")
+        if(!message.channel.name.includes("tpcs-")) return message.channel.send("**FOUT!** - Deze Ticket staat niet in de Database! Dus het is niet mogelijk om dit kanaal te sluiten! Is dit wel een ticket? Vraag aan een Manager+ om de ticket handmatig te sluiten!")
         if(!args[0]) return message.channel.send("**FOUT!** - Geef een geldige reden op!")
         message.channel.delete();
     }
@@ -80,7 +80,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
     if(reaction.message.id == ticketid && reaction.emoji.name == '❓') {
         reaction.users.remove(user);
 
-        reaction.message.guild.channels.create(`vraag-${user.username}`, {
+        reaction.message.guild.channels.create(`tpcs-vraag-${user.username}`, {
             permissionOverwrites: [
                 {
                     id: user.id,
@@ -107,7 +107,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
     if(reaction.message.id == ticketid && reaction.emoji.name == '🎫') {
         reaction.users.remove(user);
 
-        reaction.message.guild.channels.create(`overig-${user.username}`, {
+        reaction.message.guild.channels.create(`tpcs-overig-${user.username}`, {
             permissionOverwrites: [
                 {
                     id: user.id,
@@ -134,7 +134,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
     if(reaction.message.id == ticketid && reaction.emoji.name == '🎁') {
         reaction.users.remove(user);
     
-        reaction.message.guild.channels.create(`event-${user.username}`, {
+        reaction.message.guild.channels.create(`tpcs-event-${user.username}`, {
             permissionOverwrites: [
                 {
                     id: user.id,
@@ -161,7 +161,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
     if(reaction.message.id == ticketid && reaction.emoji.name == '⚡') {
         reaction.users.remove(user);
         
-        reaction.message.guild.channels.create(`management-${user.username}`, {
+        reaction.message.guild.channels.create(`tpcs-management-${user.username}`, {
             permissionOverwrites: [
                 {
                     id: user.id,
@@ -188,7 +188,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
         if(reaction.message.id == ticketid && reaction.emoji.name == '📋') {
             reaction.users.remove(user);
     
-            reaction.message.guild.channels.create(`sollicitatie-${user.username}`, {
+            reaction.message.guild.channels.create(`tpcs-sollicitatie-${user.username}`, {
                 permissionOverwrites: [
                     {
                         id: user.id,
