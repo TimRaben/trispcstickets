@@ -15,7 +15,7 @@ setInterval(() => {
 
     const status = statuses[Math.floor(Math.random() * statuses.length)]
     client.user.setActivity(status, { type: "WATCHING"}) // Can Be WATCHING, STREAMING, LISTENING
-}, 4500) // Second You Want to Change Status, This Cahnges Every 2 Seconds
+}, 2800) // Second You Want to Change Status, This Cahnges Every 2 Seconds
 
 const settings = new enmap({
     name: "settings",
@@ -55,7 +55,7 @@ client.on('message', async message => {
         sent.react('🎫')
         settings.set(`${message.guild.id}-ticket`, sent.id);
 
-        message.channel.send("**Succesvol Reactie Bericht aangemaakt!**")
+        message.channel.send("**Ticket Setup** - Succesvol aangemaakt!")
     }
 
     if(command == "close") {
